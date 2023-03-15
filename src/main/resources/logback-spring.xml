@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %p [%X{traceId}] [%X{spanId}] [%t] %logger{39} : %m%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <logger name="jdbc.sqltiming" level="DEBUG"/>
+    <logger name="jdbc.resultsettable" level="DEBUG"/>
+    <logger name="org.apache.http" level="DEBUG"/>
+    <logger name="com.kt" level="DEBUG"/>
+    <logger name="org.springframework.web.servlet.DispatcherServlet" level="DEBUG"/>
+    <logger name="org.springframework.web.client.RestTemplate" level="DEBUG"/>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>

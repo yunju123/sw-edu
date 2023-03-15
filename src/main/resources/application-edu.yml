@@ -1,0 +1,3 @@
+properties:
+  name: ${PROPERTIES_NAME}
+  number: ${PROPERTIES_NUMBER}
