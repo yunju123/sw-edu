@@ -6,11 +6,19 @@ properties:
 spring:
   application:
     name: ${properties.name}
+  profiles:
+    active: default
+  cloud:
+    config:
+      enabled: false
+#  config:
+#    import: "configserver:http://sw-edu-config.211-34-231-82.nip.io"
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://sw-edu-eureka.211-34-231-82.nip.io/eureka/
+    enabled: false
   instance:
     instance-id: 1
     appname: ${properties.name}
@@ -22,11 +30,13 @@ management:
     enabled-by-default: false
     web:
       exposure:
-        include: health,metrics,env,info
+        include: health,metrics,env,info,refresh
   endpoint:
     health:
       enabled: true
       show-details: always
+    refresh:
+      enabled: true
   info:
     defaults:
       enabled: true
