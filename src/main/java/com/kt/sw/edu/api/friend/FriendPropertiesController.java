@@ -11,19 +11,20 @@ import org.springframework.web.client.RestTemplate;
 public class FriendPropertiesController {
 
     /**
-     * URL에 있는 address 요청 주소로 하는 기능을 가지고 있음
-     * 로컬에서 실행한다고 address IP로 들어가야 하고
-     * VM에서 호출한다고 하면 hostname이 들어가야 하고
-     * K8S에서 호출한다고 하면 Service 이름이 들어가야 함
-     *
-     * @param address
-     * @return
+     * URL에 있는 address 값에 요청하는 기능을 가지고 있음
+     * 로컬에서 실행한다면  IP:Port로 들어가야 함
+     * VM에서 호출한다면 hostname이 들어가야 함
      */
 
     private final RestTemplate restTemplate;
 
     public FriendPropertiesController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
+    }
+
+    @GetMapping("/name")
+    public String retrieveFriendName(@PathVariable String address) {
+        return restTemplate.getForEntity("http://" + address + "/properties/name", String.class).getBody();
     }
 
     @GetMapping("/number")

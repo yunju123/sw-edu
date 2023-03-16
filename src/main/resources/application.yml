@@ -17,13 +17,14 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://sw-edu-eureka.211-34-231-82.nip.io/eureka/
+      defaultZone: http://sw-edu-eureka.211-34-231-82.nip.io/eureka
     enabled: false
   instance:
-    instance-id: 1
+    ip-address: X.X.X.X
+    instance-id: ${eureka.instance.ip-address}
     appname: ${properties.name}
     prefer-ip-address: true
-    ip-address: 192.168.2.3
+
 
 management:
   endpoints:
@@ -37,6 +38,8 @@ management:
       show-details: always
     refresh:
       enabled: true
+    info:
+      enabled: true
   info:
     defaults:
       enabled: true
@@ -49,3 +52,4 @@ management:
   health:
     defaults:
       enabled: false
+
