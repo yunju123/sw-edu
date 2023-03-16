@@ -1,0 +1,25 @@
+#build
+docker build -t swedu/spring-cloud-workshop:joohyun .
+
+#run 
+docker run -p 8080:8080 -t --name spring-cloud-workshop swedu/spring-cloud-workshop:joohyun
+
+#stop
+docker stop spring-cloud-workshop
+
+#remove
+docker rm spring-cloud-workshop
+
+#remote image
+docker rmi {containtId}
+
+#docker Shell
+docker exec -it spring-cloud-workshop sh
+
+#docker Log trace (local run)
+docker logs spring-cloud-workshop -f
+
+# Repo Push
+docker tag swedu/spring-cloud-workshop:joohyun ktedu.duckdns.org:40002/edu/springcloud/workshop:joohyun
+docker push ktedu.duckdns.org:40002/edu/springcloud/workshop:joohyun
+
